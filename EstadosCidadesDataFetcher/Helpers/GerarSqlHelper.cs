@@ -21,7 +21,7 @@ namespace EstadosCidadesDataFetcher.Helpers
             {
                 foreach (var cidade in cidades)
                 {
-                    writer.WriteLine($"INSERT INTO Cidade (Nome, EstadoId) VALUES ('{cidade.Nome.Replace("'", "''")}', SELECT Id FROM Estado WHERE Sigla = '{cidade.Microrregiao.Mesorregiao.UF.Sigla.Replace("'", "''")}');"); 
+                    writer.WriteLine($"INSERT INTO Cidade (Nome, EstadoId) VALUES ('{cidade.Nome.Replace("'", "''")}', (SELECT Id FROM Estado WHERE Sigla = '{cidade.Microrregiao.Mesorregiao.UF.Sigla.Replace("'", "''")}'));"); 
                 }
             }
             Console.WriteLine("Arquivo cidade.sql gerado com sucesso!");
