@@ -6,25 +6,25 @@ namespace EstadosCidadesDataFetcher.Helpers
     {
         public void GerarSqlEstados(List<Estado> estados) 
         {
-            using (var writer = new StreamWriter("estados.sql")) 
+            using (var writer = new StreamWriter("estado.sql")) 
             {
                 foreach (var estado in estados)
                 {
-                    writer.WriteLine($"INSERT INTO Estados (Id, Nome, Sigla) VALUES ({estado.Id}, '{estado.Nome.Replace("'", "''")}', '{estado.Sigla.Replace("'", "''")}');");
+                    writer.WriteLine($"INSERT INTO Estado (Nome, Sigla) VALUES ('{estado.Nome.Replace("'", "''")}', '{estado.Sigla.Replace("'", "''")}');");
                 }
             }
-            Console.WriteLine("Arquivo estados.sql gerado com sucesso!");
+            Console.WriteLine("Arquivo estado.sql gerado com sucesso!");
         }
         public void GerarSqlCidades(List<Cidade> cidades) 
         {
-            using (var writer = new StreamWriter("cidades.sql"))
+            using (var writer = new StreamWriter("cidade.sql"))
             {
                 foreach (var cidade in cidades)
                 {
-                    writer.WriteLine($"INSERT INTO Cidades (Id, Nome, EstadoId) VALUES ({cidade.Id}, '{cidade.Nome.Replace("'", "''")}', {cidade.Microrregiao.Mesorregiao.UF.Id});");
+                    writer.WriteLine($"INSERT INTO Cidade (Nome, EstadoId) VALUES ('{cidade.Nome.Replace("'", "''")}', SELECT Id FROM Estado WHERE Sigla = '{cidade.Microrregiao.Mesorregiao.UF.Sigla.Replace("'", "''")}');"); 
                 }
             }
-            Console.WriteLine("Arquivo cidades.sql gerado com sucesso!");
+            Console.WriteLine("Arquivo cidade.sql gerado com sucesso!");
         }
     }
 }
