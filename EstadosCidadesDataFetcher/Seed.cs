@@ -1,6 +1,5 @@
 ﻿using EstadosCidadesDataFetcher.Entities;
 using System.Net.Http.Json;
-using System.Linq;
 
 namespace EstadosCidadesDataFetcher
 {
@@ -13,7 +12,7 @@ namespace EstadosCidadesDataFetcher
             return estados ?? new List<Estado>();
         }
 
-        public static async Task<List<Cidade>> ObterCidadesPorEstados(List<Estado> estados) 
+        public static async Task<List<Cidade>> ObterCidades(List<Estado> estados) 
         {
             List<Cidade> cidades = new();
             var httpClient = new HttpClient();
