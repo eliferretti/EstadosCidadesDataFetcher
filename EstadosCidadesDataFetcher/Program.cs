@@ -8,8 +8,8 @@ var cidades = await Seed.ObterCidades(estados);
 sqlHelper.GerarSqlEstados(estados);
 sqlHelper.GerarSqlCidades(cidades);
 
-var bancoHelper = new CriaBancoHelper();
-bancoHelper.CriaBanco();
+//var bancoHelper = new CriaBancoHelper();
+//bancoHelper.CriaBanco();
 
 Console.WriteLine("Fim da aplicação!!");
 Console.ReadLine();

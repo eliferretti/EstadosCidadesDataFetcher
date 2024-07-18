@@ -16,6 +16,8 @@ namespace EstadosCidadesDataFetcher.Helpers
                 createTableCmd.CommandText = @"
                     CREATE TABLE IF NOT EXISTS Estado (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        DataCadastro DATETIMEOFFSET NOT NULL, 
+                        DataUltimaAlteracao DATETIMEOFFSET NOT NULL, 
                         Nome TEXT NOT NULL,
                         Sigla NOT NULL
                     )";
@@ -24,6 +26,8 @@ namespace EstadosCidadesDataFetcher.Helpers
                 createTableCmd.CommandText = @"
                     CREATE TABLE IF NOT EXISTS Cidade (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        DataCadastro DATETIMEOFFSET NOT NULL, 
+                        DataUltimaAlteracao DATETIMEOFFSET NOT NULL, 
                         Nome TEXT NOT NULL,
                         EstadoId INTEGER NOT NULL
                     )";
